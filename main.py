@@ -107,7 +107,7 @@ def generate_message() -> str | None:
 
     text.extend(
         [
-            f"## 当前剩余电量：{remain} kWh",
+            f"## 当前剩余电量：{last_remain} kWh",
             "",
             f"个人信息：{building_number_map(buildid[0])} 号楼 {roomid[0]} 室",
             f"统计时间：{get_date()}",
@@ -159,7 +159,7 @@ def telegram(text: str | None) -> None:
     if not text:
         return
 
-    import telegramify_markdown
+    import telegramify_markdown # type: ignore
 
     for user_id in TELEGRAM_USER_IDS:
         if not user_id:
